@@ -1,38 +1,37 @@
 package com.example.moviles.components
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.background
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.Icon
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import com.example.moviles.R
 
 val Background = Color(0xFFFAF8EF)
 val TileEmpty = Color(0xFFCDC1B4)
 val TileBorder = Color(0xFFBBADA0)
 
-@Preview(showBackground = true)
 @Composable
 fun Game2048Screen() {
     Column(
@@ -47,9 +46,9 @@ fun Game2048Screen() {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Icon(Icons.Default.Menu, contentDescription = null)
+            Icon(painter = painterResource(R.drawable.menu), contentDescription = null, modifier = Modifier.size(32.dp))
             Text("2048", fontSize = 32.sp, fontWeight = FontWeight.Bold)
-            Icon(Icons.Default.Refresh, contentDescription = null)
+            Icon(painter = painterResource(R.drawable.update), contentDescription = null, modifier = Modifier.size(32.dp))
         }
 
         Spacer(Modifier.height(12.dp))
@@ -134,12 +133,13 @@ fun ControlButtons() {
             .padding(12.dp),
         horizontalArrangement = Arrangement.spacedBy(24.dp)
     ) {
-        Icon(Icons.Default.Undo, contentDescription = null)
-        Icon(Icons.Default.Shuffle, contentDescription = null)
-        Icon(Icons.Default.GridView, contentDescription = null)
+        Icon(painter = painterResource(R.drawable.returnicon), contentDescription = null, modifier = Modifier.size(32.dp))
+        Icon(painter = painterResource(R.drawable.squares), contentDescription = null, modifier = Modifier.size(32.dp))
+        Icon(painter = painterResource(R.drawable.swap), contentDescription = null, modifier = Modifier.size(32.dp))
     }
 }
 
+@Preview(showBackground = true)
 @Composable
 fun GameOverScreen() {
     Column(
@@ -162,8 +162,8 @@ fun GameOverScreen() {
         Spacer(Modifier.height(12.dp))
 
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            Icon(Icons.Default.Undo, contentDescription = null)
-            Icon(Icons.Default.Shuffle, contentDescription = null)
+            Icon(painter = painterResource(R.drawable.returnicon), contentDescription = null, modifier = Modifier.size(32.dp))
+            Icon(painter = painterResource(R.drawable.swap), contentDescription = null, modifier = Modifier.size(32.dp))
         }
 
         Spacer(Modifier.height(16.dp))
