@@ -1,0 +1,52 @@
+
+
+package com.example.prueba
+
+import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var tvScreen: TextView
+    private lateinit var btnA: Button
+    private lateinit var btnB: Button
+    private lateinit var btnX: Button
+    private lateinit var btnY: Button
+    private lateinit var btnReset: Button
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        tvScreen = findViewById(R.id.tvScreen)
+        btnA = findViewById(R.id.btnA)
+        btnB = findViewById(R.id.btnB)
+        btnX = findViewById(R.id.btnX)
+        btnY = findViewById(R.id.btnY)
+        btnReset = findViewById(R.id.btnReset)
+
+        val buttons = listOf(btnA, btnB, btnX, btnY)
+
+        buttons.forEach { button ->
+            button.setOnClickListener {
+                tvScreen.text = "Botón activo: ${button.text}"
+                disableOtherButtons(buttons, button)
+            }
+        }
+
+        btnReset.setOnClickListener {
+            tvScreen.text = "Pantalla superior"
+            buttons.forEach { it.isEnabled = true }
+        }
+    }
+
+    private fun disableOtherButtons(buttons: List<Button>, activeButton: Button) {
+        buttons.forEach {
+            if (it != activeButton) {
+                it.isEnabled = false
+            }
+        }
+    }
+}
